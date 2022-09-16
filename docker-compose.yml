@@ -3,8 +3,6 @@ version: '3'
 services:
   zookeeper:
     image: 'bitnami/zookeeper:3.8'
-    ports:
-      - '2181:2181'
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
 
@@ -26,7 +24,7 @@ services:
   kafka-ui:
     image: provectuslabs/kafka-ui
     ports:
-      - "8080:8080"
+      - "9080:8080"
     environment:
       - KAFKA_CLUSTERS_0_NAME=docker-compose
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9093
