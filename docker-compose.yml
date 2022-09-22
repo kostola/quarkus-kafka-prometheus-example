@@ -29,3 +29,16 @@ services:
       - KAFKA_CLUSTERS_0_NAME=docker-compose
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9093
       - KAFKA_CLUSTERS_0_ZOOKEEPER=zookeeper:2181
+
+  prometheus:
+    image: prom/prometheus:v2.37.1
+    network_mode: "host"
+    volumes:
+      - ./docker-compose/prometheus:/etc/prometheus
+
+  grafana:
+    image: grafana/grafana:7.5.16
+    network_mode: "host"
+    volumes:
+      - ./docker-compose/grafana/provisioning/:/etc/grafana/provisioning/
+      - ./docker-compose/grafana/grafana.ini:/etc/grafana/grafana.ini
